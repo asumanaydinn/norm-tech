@@ -15,9 +15,9 @@ const HeroSection = () => {
 
       {/* Content aligned to far left */}
       <div className="relative z-20 flex items-center h-full w-full">
-        <div className="pl-6 md:pl-16 lg:pl-24 pr-4 flex flex-col gap-5 text-white">
+        <div className="pl-6 md:pl-16 lg:pl-24 pr-4 flex flex-col gap-4">
           <h1
-            className="text-6xl font-bold mb-4 text-left"
+            className="text-6xl font-bold mb-4 text-left text-slate-100"
             style={{ lineHeight: "1.2" }}
           >
             Madencilik ve Keşifte <br /> Güvenilir Ortak

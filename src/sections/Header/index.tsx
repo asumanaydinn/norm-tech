@@ -15,7 +15,7 @@ const Header = () => {
               />
             </div>
             <div className="flex flex-col items-start">
-              <span className="text-xl">NORM</span>
+              <span className="text-xl font-semibold">NORM</span>
               <span className="text-sm text-slate-500">
                 SONDAJ TEKNOLOJİLERİ LTD ŞTİ.
               </span>
