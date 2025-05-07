@@ -12,7 +12,7 @@ const NavigationMenu = () => {
 
   return (
     <div className="flex items-end justify-between py-3">
-      <div className="flex items-end gap-10">
+      <div className="flex items-end gap-7">
         {menuItems.map((item) => (
           <div
             key={item}
@@ -34,7 +34,7 @@ const NavigationMenu = () => {
           </div>
         ))}
       </div>
-      <div className="flex items-center gap-5">
+      <div className="flex items-center gap-2">
         <div className="w-10 h-10 rounded-full cursor-pointer bg-[#1d40af] flex items-center justify-center transition duration-200 hover:brightness-110 hover:scale-105">
           <img
             src="/assets/instagram.svg"
