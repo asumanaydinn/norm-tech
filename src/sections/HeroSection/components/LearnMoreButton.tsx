@@ -9,13 +9,15 @@ const LearnMoreButton = () => {
   };
 
   return (
-    <button
-      onClick={handleClick}
-      className="group flex items-center gap-2 px-6 py-2 rounded-full bg-blue-600 text-slate-100 font-semibold shadow-lg border border-blue-700 hover:bg-blue-700 hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 transform hover:scale-[1.03]"
-    >
-      Learn More
-      <RightCircleOutlined className="text-xl transition-transform duration-300 transform group-hover:translate-x-1 group-hover:scale-110" />
-    </button>
+    <div className="h-20">
+      <button
+        onClick={handleClick}
+        className="group w-44 flex items-center gap-2 px-6 py-2 rounded-full text-blue-700 hover:text-slate-50 font-semibold border border-blue-700 hover:border-transparent hover:bg-slate-500 hover:shadow-md transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
+      >
+        Learn More
+        <RightCircleOutlined className="text-2xl text-blue-700 group-hover:text-slate-50 transition-colors duration-300" />
+      </button>
+    </div>
   );
 };
 

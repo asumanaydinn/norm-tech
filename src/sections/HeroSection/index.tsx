@@ -2,7 +2,7 @@ import LearnMoreButton from "./components/LearnMoreButton";
 
 const HeroSection = () => {
   return (
-    <div className="relative h-screen overflow-hidden">
+    <div className="relative h-[700px] flex overflow-hidden">
       {/* Background image */}
       <img
         src="/assets/hero-background.png"
@@ -10,24 +10,23 @@ const HeroSection = () => {
         className="absolute inset-0 w-full h-full object-cover z-0"
       />
 
-      {/* Blue overlay */}
-      <div className="absolute inset-0 bg-slate-950 opacity-60 z-10"></div>
+      {/* Left-to-right gradient overlay */}
+      <div className="absolute inset-0 z-10 bg-gradient-to-r from-slate-950/95 via-slate-950/60 to-transparent"></div>
 
-      {/* Content */}
-      <div className="relative z-20 flex flex-col items-center justify-center text-center h-full px-4 text-white">
-        <h1 className="text-3xl md:text-5xl font-bold mb-4">
-          Madencilik ve Keşifte Güvenilir Ortak
-        </h1>
-        <p className="text-lg md:text-2xl mb-2 max-w-2xl">
-          Madencilik ve Keşifte Yenilik ve Dürüstlükle Geleceği
-          Şekillendiriyoruz.
-        </p>
-        <p className="text-sm md:text-base mb-6 max-w-2xl">
-          NORM Engineering olarak, en yüksek çevresel, sosyal ve yönetişim
-          standartlarına uygun, güvenli ve sürdürülebilir mühendislik çözümleri
-          sunuyoruz.
-        </p>
-        <LearnMoreButton />
+      {/* Content aligned to far left */}
+      <div className="relative z-20 flex items-center h-full w-full">
+        <div className="pl-6 md:pl-16 lg:pl-24 pr-4 flex flex-col gap-5 text-white">
+          <h1 className="text-6xl font-bold mb-4 text-left">
+            Madencilik ve Keşifte Güvenilir Ortak
+          </h1>
+
+          <p className="text-xl mb-6 border-l-4 border-blue-500 pl-4 max-w-2xl text-left text-slate-500">
+            NORM Engineering olarak, en yüksek çevresel, sosyal ve yönetişim
+            standartlarına uygun, güvenli ve sürdürülebilir mühendislik
+            çözümleri sunuyoruz.
+          </p>
+          <LearnMoreButton />
+        </div>
       </div>
     </div>
   );
