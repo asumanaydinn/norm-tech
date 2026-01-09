@@ -1,55 +1,72 @@
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
-const NavigationMenu = () => {
-  const [selectedItem, setSelectedItem] = useState("Hakkımızda");
+interface NavigationMenuProps {
+  isScrolled: boolean;
+}
+
+const NavigationMenu = ({ isScrolled }: NavigationMenuProps) => {
+  const location = useLocation();
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
   const menuItems = [
-    "Hakkımızda",
-    "Hizmetlerimiz",
-    "Proje Referanslarımız",
-    "İletişim",
+    { label: "Hakkımızda", href: "/" },
+    { label: "Hizmetlerimiz", href: "/hizmetlerimiz" },
+    { label: "Proje Referanslarımız", href: "/proje-referanslarimiz" },
+    { label: "Blog", href: "/blog" },
+    { label: "İletişim", href: "/iletisim" },
   ];
 
   return (
-    <div className="flex items-end justify-between py-3">
-      <div className="flex items-end gap-7">
+    <div className="flex items-center justify-center py-4">
+      {/* Logo - Visible when scrolled */}
+      <Link
+        to="/"
+        className={`absolute left-6 md:left-12 flex items-center gap-3 transition-all duration-300 hover:opacity-80 ${
+          isScrolled
+            ? "opacity-100 translate-x-0"
+            : "opacity-0 -translate-x-4 pointer-events-none"
+        }`}
+      >
+        <img
+          src="/assets/norm-logo.png"
+          className="h-10 w-auto object-contain"
+          alt="NORM logo"
+        />
+        <div className="flex flex-col justify-center">
+          <span className="text-white font-bold text-base leading-tight">NORM</span>
+          <span className="text-xs text-slate-500 leading-tight">Engineering</span>
+        </div>
+      </Link>
+
+      {/* Navigation Menu - Centered */}
+      <nav className="flex items-center gap-1">
         {menuItems.map((item) => (
-          <div
-            key={item}
-            onClick={() => setSelectedItem(item)}
-            className="relative cursor-pointer py-2 text-slate-400 transition-colors duration-200 hover:text-slate-200"
+          <Link
+            key={item.label}
+            to={item.href}
+            onMouseEnter={() => setHoveredItem(item.label)}
+            onMouseLeave={() => setHoveredItem(null)}
+            className="relative px-4 py-2 text-slate-300 font-medium transition-colors duration-200 hover:text-white group"
           >
+            {item.label}
+            
+            {/* Hover indicator */}
             <span
-              className={`relative inline-block font-medium transition-colors duration-200 ${
-                selectedItem === item ? "text-slate-100" : ""
+              className={`absolute left-0 right-0 bottom-0 h-0.5 bg-gradient-to-r from-amber-500 to-amber-600 transition-all duration-300 ${
+                hoveredItem === item.label || location.pathname === item.href
+                  ? "opacity-100 scale-x-100"
+                  : "opacity-0 scale-x-0"
               }`}
-            >
-              {item}
-              <span
-                className={`absolute left-0 -bottom-2 h-0.5 bg-[#1d40af] transition-all duration-300 ${
-                  selectedItem === item ? "w-full" : "w-0"
-                }`}
-              />
-            </span>
-          </div>
+            />
+
+            {/* Active dot */}
+            {(location.pathname === item.href || (location.pathname === "/" && item.href === "/")) && (
+              <span className="absolute -top-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-amber-500 rounded-full" />
+            )}
+          </Link>
         ))}
-      </div>
-      <div className="flex items-center gap-2">
-        <div className="w-10 h-10 rounded-full cursor-pointer bg-[#1d40af] flex items-center justify-center transition duration-200 hover:brightness-110 hover:scale-105">
-          <img
-            src="/assets/instagram.svg"
-            className="w-5 h-5"
-            alt="instagram-icon"
-          />
-        </div>
-        <div className="w-10 h-10 rounded-full cursor-pointer bg-[#1d40af] flex items-center justify-center transition duration-200 hover:brightness-110 hover:scale-105">
-          <img
-            src="/assets/linkedin.svg"
-            className="w-5 h-5"
-            alt="linkedin-icon"
-          />
-        </div>
-      </div>
+      </nav>
     </div>
   );
 };
